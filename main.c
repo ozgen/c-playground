@@ -1,5 +1,15 @@
 #include <stdio.h>
 
+#define TEST int
+
+
+unsigned TEST t;
+
+typedef int a_test;
+
+a_test a;
+
+
 extern int get_number();
 extern int test;
 
@@ -14,6 +24,33 @@ int increment() {
     localVar ++;
     return counter;
 }
+
+// Example of variable length array
+void alphabet_array(int size) {
+    char alphabet_array[size];
+    int x = 0;
+
+    while (x < size) {
+        alphabet_array[x] = 'A' + x;
+        printf("alphabet_array[%d] = %c\n", x, alphabet_array[x]);
+        x++;
+    }
+}
+
+// Example of variable length array
+int sum2d(int row, int col, int arr[row][col]) {
+    int r;
+    int c;
+    int tot = 0;
+
+    for (r = 0; r < row; r++) {
+        for (c = 0; c < col; c++) {
+            tot += arr[r][c];
+        }
+    }
+    return tot;
+}
+
 
 int main(void) {
     printf("Hello, World!\n");
@@ -32,5 +69,13 @@ int main(void) {
     i_pointer a, *b; // same as int* a , **b
     i_pointer array[10];  // same as int *array[10]
 
+    size_t size = 0;
+
+    // printf("Enter array size: ");
+    // scanf("%d", &size);
+    // float values[size];
+
+    alphabet_array(5);
+    alphabet_array(10);
     return 0;
 }
