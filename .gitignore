@@ -1,0 +1,8 @@
+build/
+tags
+.ccls
+.vscode
+.venv
+.idea
+cmake-build-debug
+/cmake-build-debug/
