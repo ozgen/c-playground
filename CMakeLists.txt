@@ -10,3 +10,5 @@ add_executable(c_playground main.c
         linkedlist.c
         insert.h
         insert.c)
+# Link against the math library
+target_link_libraries(c_playground m)

@@ -1,5 +1,8 @@
+#include <complex.h>
 #include <stdio.h>
+#include <stdlib.h>
 
+#define __STDC_WANT_LIB_EXT1__ 1
 #define TEST int
 
 
@@ -51,6 +54,12 @@ int sum2d(int row, int col, int arr[row][col]) {
     return tot;
 }
 
+// flesible array members
+struct s {
+    int arraySize;
+    int array[];
+};
+
 
 int main(void) {
     printf("Hello, World!\n");
@@ -77,5 +86,25 @@ int main(void) {
 
     alphabet_array(5);
     alphabet_array(10);
+
+    // flexible array members
+    int desireArraySize = 10;
+    struct s *ptr;
+
+    ptr = malloc(sizeof(struct s) + desireArraySize * sizeof(int));
+    // end flexible array member
+
+    // complex number
+    #ifdef __STDC_NO_COMPLEX__
+    #else
+        printf("complex are supported.\n");
+
+        double complex cx = 1.0 + 3.0* I;
+        double complex cy = 1.0 - 4.0* I;
+        printf("cx_r = %f,cx_i = %f, cy_r = %f, cy_i = %f\n",creal(cx), cimag(cx), creal(cy), cimag(cy));
+        double complex cz = cpow(cx, cy);
+        printf("cz_r = %f, cz_i = %f\n",creal(cz), cimag(cz));
+    #endif
+
     return 0;
 }
