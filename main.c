@@ -1,4 +1,5 @@
 #include <complex.h>
+#include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -104,6 +105,18 @@ int main(void) {
         printf("cx_r = %f,cx_i = %f, cy_r = %f, cy_i = %f\n",creal(cx), cimag(cx), creal(cy), cimag(cy));
         double complex cz = cpow(cx, cy);
         printf("cz_r = %f, cz_i = %f\n",creal(cz), cimag(cz));
+        double complex z1 = I * I;     // imaginary unit squared
+        printf("I * I = %.1f%+.1fi\n", creal(z1), cimag(z1));
+
+        double complex z2 = pow(I, 2); // imaginary unit squared
+        printf("pow(I, 2) = %.1f%+.1fi\n", creal(z2), cimag(z2));
+
+        double PI = acos(-1);
+        double complex z3 = exp(I * PI); // Euler's formula
+        printf("exp(I*PI) = %.1f%+.1fi\n", creal(z3), cimag(z3));
+
+        double complex z4 = 1+2*I, z5 = 1-2*I; // conjugates
+        printf("(1+2i)*(1-2i) = %.1f%+.1fi\n", creal(z4*z5), cimag(z4*z5));
     #endif
 
     return 0;
