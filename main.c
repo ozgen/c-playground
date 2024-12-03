@@ -68,6 +68,16 @@ struct point {
     int y;
 };
 
+// packed data with bits
+struct packed_struct {
+    unsigned int : 3;
+    unsigned int f1: 1;
+    unsigned int f2: 1;
+    unsigned int f3: 1;
+    unsigned int type: 8;
+    unsigned int index: 18;
+};
+
 int main(void) {
     printf("Hello, World!\n");
     int number = 0;
@@ -153,9 +163,45 @@ int main(void) {
         rest_arr[n] += 5;
         arr[n] *= 2;
         par[n] += 3;
-        rest_arr[n] += 3;  // optimized by the compiler like -> rest_arr[n] += 8;
+        rest_arr[n] += 3; // optimized by the compiler like -> rest_arr[n] += 8;
     }
 
+    // bit manipulation
+    short int w1 = 25;
+    short int w2 = 77;
+    short int w3 = 0;
+    short int w4 = 2;
+    w3 = w1 & w2;
+    printf("w1 = %d, w2 = %d, w3 = %d\n", w1, w2, w3);
+    w3 = w1 | w2;
+    printf("w1 = %d, w2 = %d, w3 = %d\n", w1, w2, w3);
+    w3 ^= w1;
+    printf("w1 = %d, w2 = %d, w3 = %d\n", w1, w2, w3);
+    w3 = ~w4;
+    printf("w1 = %d, w2 = %d, w3 = %d\n", w1, w2, w3);
+    int result = 0;
+    result = w1 << 1;
+    printf("result = %d\n", result);
+
+    int flags = 15; // 0000 1111
+    int mask = 182; // 1011 0110
+
+    flags = flags | mask; // 1011 1111
+    printf("flags = %d\n", flags);
+    flags = 15;
+    flags = flags & (~mask); // 0000 1001
+    printf("flags = %d\n", flags);
+    flags = 15;
+    flags = flags ^ mask; // 1011 1001
+    printf("flags = %d\n", flags);
+
+    // pact of data
+    struct packed_struct packed_data;
+    packed_data.type = 7;
+    unsigned int bit = packed_data.type;
+    if (packed_data.f1 == 0) {
+        printf("packed_data.f1 = %d\n", packed_data.type);
+    }
 
     return 0;
 }
@@ -168,7 +214,7 @@ char *strcat(char *s1, const char *s2) {
 
 
 // restrict
-void f1(int n, float * restrict a1, const float * restrict a2) {
+void f1(int n, float *restrict a1, const float *restrict a2) {
     int i;
     for (i = 0; i < n; i++) {
         a1[i] += a2[i];
