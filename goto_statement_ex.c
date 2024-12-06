@@ -29,4 +29,5 @@ int main(){
         }
 
     // end goto example
+    return 0;
 }
