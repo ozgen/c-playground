@@ -110,3 +110,10 @@ Visit the [wiki](https://github.com/ozgen/c-playground/wiki/Some-tips-while-prog
 ### Unions
 - [Union Example 1](./unions-ex/union_ex.c)
 - [Union Example 2](./unions-ex/union_ex_2.c)
+
+### Networking (Sockets)
+- [simple socket server Example](./networking-ex/networking_simple_socket_ex.c)
+- [simple socket client Example](./networking-ex/networking_simple_socket_client_ex.c)
+- [socket server Example 2](./networking-ex/server.c)
+- [socket client 1 Example 2](./networking-ex/client1.c)
+- [socket client 2 Example 2](./networking-ex/client2.c)
